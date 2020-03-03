@@ -39,11 +39,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+
   # DELETE /articles/1
   def destroy
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
+
+
+  #Uplaod photo
+  def article_params
+    params.require(:article).permit(:title, :body, :photo)
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
